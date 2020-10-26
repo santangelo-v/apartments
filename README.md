@@ -1,5 +1,7 @@
 # Apartments
 
+Simple CMS to manage apartments.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
