@@ -22,19 +22,19 @@ defmodule ApartmentsWeb.Router do
     get "/", PageController, :index
   end
 
-  #scope "/apartments", ApartmentsWeb do
+  # scope "/apartments", ApartmentsWeb do
   #  pipe_through :api
 
   #  get "/", ApartmentsController, :show
   #  get "/:id", ApartmentsController, :show
-  #end
+  # end
 
-  #scope "/calendars", ApartmentsWeb do
+  # scope "/calendars", ApartmentsWeb do
   #  pipe_through :api
 
   #  get "/", CalendarsController, :show
   #  get "/:id", CalendarsController, :show
-  #end
+  # end
 
   scope "/reservations", ApartmentsWeb do
     pipe_through :api

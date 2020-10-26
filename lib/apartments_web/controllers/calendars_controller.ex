@@ -8,7 +8,7 @@ defmodule ApartmentsWeb.CalendarsController do
     json(conn, calendar)
   end
 
-  def show(conn, _params) do
+  def index(conn, _params) do
     json(conn, Repo.all(Calendar))
   end
 end

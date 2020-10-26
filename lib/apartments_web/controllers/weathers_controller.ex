@@ -8,7 +8,7 @@ defmodule ApartmentsWeb.WeathersController do
     json(conn, weather)
   end
 
-  def show(conn, _params) do
+  def index(conn, _params) do
     json(conn, Repo.all(Weather))
   end
 end
