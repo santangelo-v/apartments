@@ -9,8 +9,7 @@ defmodule ApartmentsEngine.Apartment do
           name: String.t(),
           description: String.t(),
           vacancies: pos_integer(),
-          calendar: ApartmentsEnginge.Calendar.t(),
-          weather: ApartmentsEnginge.Weather.t()
+          calendar: ApartmentsEnginge.Calendar.t()
         }
 
   @enforce_keys [:name, :description, :vacancies]
@@ -18,30 +17,27 @@ defmodule ApartmentsEngine.Apartment do
     :name,
     :description,
     :vacancies,
-    :calendar,
-    :weather
+    :calendar
   ]
 
   @spec new(
           String.t(),
           String.t(),
           pos_integer(),
-          ApartmentsEnginge.Calendar.t(),
-          ApartmentsEnginge.Weather.t()
+          ApartmentsEnginge.Calendar.t()
         ) ::
           {:error, <<_::176>>} | {:ok, ApartmentsEngine.Apartment.t()}
   def new(_, _, vacancies, _, _) when vacancies < 1 do
     {:error, "Vacancies must be >= 1"}
   end
 
-  def new(name, description, vacancies, calendar, weather) do
+  def new(name, description, vacancies, calendar) do
     {:ok,
      %Apartment{
        name: name,
        description: description,
        vacancies: vacancies,
-       calendar: calendar,
-       weather: weather
+       calendar: calendar
      }}
   end
 end
