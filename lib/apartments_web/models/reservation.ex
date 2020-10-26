@@ -1,5 +1,6 @@
 defmodule ApartmentsWeb.Reservation do
   use Ecto.Schema
+  @derive {Jason.Encoder, only: [:date, :reserved_on, :vacancies, :weather]}
 
   schema "reservations" do
     field :date, :date

@@ -1,5 +1,6 @@
 defmodule ApartmentsWeb.Calendar do
   use Ecto.Schema
+  @derive {Jason.Encoder, only: [:name, :reservations]}
 
   schema "calendars" do
     field :name, :string
