@@ -1,4 +1,4 @@
-defmodule ApartmentsWeb.Weather do
+defmodule Apartments.Weather do
   use Ecto.Schema
   @derive {Jason.Encoder, only: [:temperature, :umidity, :is_good_weather]}
 
@@ -6,6 +6,6 @@ defmodule ApartmentsWeb.Weather do
     field :temperature, :integer
     field :umidity, :integer
     field :is_good_weather, :boolean
-    belongs_to :reservation, ApartmentsWeb.Reservation
+    belongs_to :reservation, Apartments.Reservation
   end
 end
