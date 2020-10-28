@@ -1,5 +1,6 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -17,6 +18,8 @@ module.exports = (env, options) => {
       ]
     },
     entry: {
+      'view_apartment': glob.sync('./vendor/**/*.js').concat(['./js/views/view_apartment.js']),
+      'show_apartments': glob.sync('./vendor/**/*.js').concat(['./js/views/show_apartments.js']),
       'app': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
     },
     output: {
@@ -46,7 +49,11 @@ module.exports = (env, options) => {
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-      new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+      new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
     ]
     .concat(devMode ? [new HardSourceWebpackPlugin()] : [])
   }
