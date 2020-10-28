@@ -33,4 +33,11 @@ npm-debug.log
 # this depending on your deployment strategy.
 /priv/static/
 
+# Ignore ElixirLS
 /.elixir_ls/
+
+# Ignore docker files
+/.docker/
+
+# Ignore log
+/log/
