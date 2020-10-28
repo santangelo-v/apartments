@@ -15,17 +15,19 @@ Apartments.Repo.insert!(%ApartmentsWeb.Apartment{
   vacancies: 5
 })
 
-margherita = Apartments.Repo.insert!(%ApartmentsWeb.Apartment{
-  name: "Villa Margherita",
-  description: "Una grande villa sul mare con tante prenotazioni",
-  vacancies: 10
-})
+margherita =
+  Apartments.Repo.insert!(%ApartmentsWeb.Apartment{
+    name: "Villa Margherita",
+    description: "Una grande villa sul mare con tante prenotazioni",
+    vacancies: 10
+  })
 
-tulipano = Apartments.Repo.insert!(%ApartmentsWeb.Apartment{
-  name: "Tulipano",
-  description: "Un piccolo appartmanto per due persone con poche prenotazioni",
-  vacancies: 2
-})
+tulipano =
+  Apartments.Repo.insert!(%ApartmentsWeb.Apartment{
+    name: "Tulipano",
+    description: "Un piccolo appartmanto per due persone con poche prenotazioni",
+    vacancies: 2
+  })
 
 date_time_now = DateTime.truncate(DateTime.utc_now(), :second)
 
@@ -36,37 +38,37 @@ Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-07-26"),
+  date: Date.from_iso8601!("2021-07-26"),
   reserved_on: date_time_now,
   apartment_id: margherita.id
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-07-27"),
+  date: Date.from_iso8601!("2021-07-27"),
   reserved_on: date_time_now,
   apartment_id: margherita.id
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-07-28"),
+  date: Date.from_iso8601!("2021-07-28"),
   reserved_on: date_time_now,
   apartment_id: margherita.id
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-08-14"),
+  date: Date.from_iso8601!("2021-08-14"),
   reserved_on: date_time_now,
   apartment_id: tulipano.id
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-08-15"),
+  date: Date.from_iso8601!("2021-08-15"),
   reserved_on: date_time_now,
   apartment_id: tulipano.id
 })
 
 Apartments.Repo.insert!(%ApartmentsWeb.Reservation{
-  date:  Date.from_iso8601!("2021-08-16"),
+  date: Date.from_iso8601!("2021-08-16"),
   reserved_on: date_time_now,
   apartment_id: tulipano.id
 })
