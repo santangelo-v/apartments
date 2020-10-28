@@ -5,8 +5,7 @@ defmodule ApartmentsWeb.Reservation do
   schema "reservations" do
     field :date, :date
     field :reserved_on, :utc_datetime
-    field :vacancies, :integer
     has_one :weather, ApartmentsWeb.Weather
-    belongs_to :calendar, ApartmentsWeb.Calendar
+    belongs_to :apartment, ApartmentsWeb.Apartment
   end
 end

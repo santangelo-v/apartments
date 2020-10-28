@@ -5,8 +5,7 @@ defmodule Apartments.Repo.Migrations.CreateReservation do
     create table(:reservations) do
       add :date, :date
       add :reserved_on, :utc_datetime
-      add :vacancies, :integer
-      add :calendar_id, references(:calendars)
+      add :apartment_id, references(:apartments)
     end
   end
 end

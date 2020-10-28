@@ -6,8 +6,7 @@ defmodule ApartmentsWeb.Apartment do
     field :name, :string
     field :description, :string
     field :vacancies, :integer
-    has_one :calendar, ApartmentsWeb.Calendar
-
+    has_many :reservations, ApartmentsWeb.Reservation
     timestamps
   end
 end
