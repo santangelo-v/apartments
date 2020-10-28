@@ -2,7 +2,8 @@ defmodule ApartmentsWeb.Router do
   use ApartmentsWeb, :router
 
   resources "/apartments", ApartmentsWeb.ApartmentsController
-  resources "/calendars", ApartmentsWeb.CalendarsController
+  resources "/reservations", ApartmentsWeb.ReservationsController
+  resources "/weathers", ApartmentsWeb.WeathersController
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -20,6 +21,7 @@ defmodule ApartmentsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/apartment", PageController, :apartment
   end
 
   # scope "/apartments", ApartmentsWeb do
@@ -35,20 +37,6 @@ defmodule ApartmentsWeb.Router do
   #  get "/", CalendarsController, :show
   #  get "/:id", CalendarsController, :show
   # end
-
-  scope "/reservations", ApartmentsWeb do
-    pipe_through :api
-
-    get "/", ReservationsController, :show
-    get "/:id", ReservationsController, :show
-  end
-
-  scope "/weathers", ApartmentsWeb do
-    pipe_through :api
-
-    get "/", WeathersController, :show
-    get "/:id", WeathersController, :show
-  end
 
   # Other scopes may use custom stacks.
   # scope "/api", ApartmentsWeb do
