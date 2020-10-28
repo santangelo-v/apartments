@@ -21,7 +21,8 @@ defmodule ApartmentsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/apartment", PageController, :apartment
+    get "/show_apartments", PageController, :show_apartments
+    get "/view_apartment/:id", PageController, :view_apartment
   end
 
   # scope "/apartments", ApartmentsWeb do

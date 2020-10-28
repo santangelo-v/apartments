@@ -1,0 +1,6 @@
+<div id="apartments-container" class="container-fluid show-apartments-container" style="padding: 2.5rem">
+  <div id="apartments-row" class="row" >
+  </div>
+</div>
+
+<script src="<%= Routes.static_path(@conn, "/js/show_apartments.js") %>"></script>
