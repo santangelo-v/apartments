@@ -45,7 +45,9 @@ defmodule Apartments.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:rabbit, "~> 0.10"}
+      {:rabbit, "~> 0.10"},
+      {:httpoison, "~> 1.6"},
+      {:poison, "~> 3.1"}
     ]
   end
 

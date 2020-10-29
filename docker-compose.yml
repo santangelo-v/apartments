@@ -34,8 +34,8 @@ services:
         - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
     environment:
         RABBITMQ_ERLANG_COOKIE: erlangCookie
-        RABBITMQ_DEFAULT_USER: rabbitmq
-        RABBITMQ_DEFAULT_PASS: rabbitmq
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
     ports:
         - 5672:5672
         - 15672:15672
