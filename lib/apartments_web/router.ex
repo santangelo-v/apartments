@@ -26,11 +26,6 @@ defmodule ApartmentsWeb.Router do
     get "/create_apartment", PageController, :create_apartment
   end
 
-  scope "/reservations/queue", ApartmentsWeb do
-    pipe_through :api
-    post "/add", QueueController, :create
-  end
-
   # scope "/apartments", ApartmentsWeb do
   #  pipe_through :api
 
