@@ -1,0 +1,16 @@
+<div class="container-fluid" style="padding: 2.5rem 15rem 2.5rem 15rem">
+  <h2 id="apartment-name-title"></h2>
+  <form>
+    <div class="form-group">
+      <label for="apartment-name">Name</label>
+      <input class="form-control" id="apartment-name" aria-describedby="emailHelp" placeholder="Insert apartment name">
+    </div>
+    <div class="form-group">
+      <label for="apartment-description">Description</label>
+      <textarea class="form-control" id="apartment-description" rows="3"></textarea>
+    </div>
+    <button id="submit-button" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<script src="<%= Routes.static_path(@conn, "/js/create_apartment.js") %>"></script>

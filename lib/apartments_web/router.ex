@@ -23,6 +23,12 @@ defmodule ApartmentsWeb.Router do
     get "/", PageController, :index
     get "/show_apartments", PageController, :show_apartments
     get "/view_apartment/:id", PageController, :view_apartment
+    get "/create_apartment", PageController, :create_apartment
+  end
+
+  scope "/reservations/queue", ApartmentsWeb do
+    pipe_through :api
+    post "/add", QueueController, :create
   end
 
   # scope "/apartments", ApartmentsWeb do

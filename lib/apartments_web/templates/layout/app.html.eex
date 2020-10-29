@@ -19,8 +19,8 @@
           <li id="show_apartments" class="nav-item">
             <a class="nav-link" href="../show_apartments">Show apartments<span class="sr-only">(current)</span></a>
           </li>
-          <li id="add_apartment" class="nav-item">
-            <a class="nav-link" href="#">Add apartment</a>
+          <li id="create_apartment" class="nav-item">
+            <a class="nav-link" href="../create_apartment">Create apartment</a>
           </li>
           <li id="add_reservation" class="nav-item">
             <a class="nav-link" href="#">Add reservation</a>
