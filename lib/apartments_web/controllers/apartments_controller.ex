@@ -4,6 +4,12 @@ defmodule ApartmentsWeb.ApartmentsController do
   alias Apartments.Repo
   alias Apartments.Apartment
 
+  def delete(conn, %{"id" => id}) do
+    apartment = Repo.get!(Apartment, id)
+    Repo.delete!(apartment)
+    json(conn, "Successfully deleted apartment #{id}")
+  end
+
   def update(conn, %{
         "id" => id,
         "name" => name,

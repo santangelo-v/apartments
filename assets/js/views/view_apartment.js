@@ -42,7 +42,13 @@ $(function () {
             "location": $("#apartment-location").val()
         }
         postData(`../apartments/${id}`, data, 'PATCH')
-        .then(res => console.log(res))
+        .then(res => console.log(res));
+    })
+
+    $("#delete-button").on("click", () => {
+        console.log("delete");
+        postData(`../apartments/${id}`, null, 'DELETE')
+        .then(res => console.log(res));
     })
 
     $('#apartment-reservations').on('change', function() {
