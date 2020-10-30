@@ -26,8 +26,17 @@ defmodule Apartments.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Apartments.Supervisor]
     Supervisor.start_link(children, opts)
-    Apartments.Rabbit.Consumer.start_link(connection: Apartments.Rabbit.Connection, queue: "reservations_queue", prefetch_count: 20)
-    Apartments.Rabbit.Producer.start_link(connection: Apartments.Rabbit.Connection, publish_opts: [content_type: "application/json"])
+
+    Apartments.Rabbit.Consumer.start_link(
+      connection: Apartments.Rabbit.Connection,
+      queue: "reservations_queue",
+      prefetch_count: 20
+    )
+
+    Apartments.Rabbit.Producer.start_link(
+      connection: Apartments.Rabbit.Connection,
+      publish_opts: [content_type: "application/json"]
+    )
   end
 
   # Tell Phoenix to update the endpoint configuration

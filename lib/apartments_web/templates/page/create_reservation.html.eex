@@ -1,0 +1,17 @@
+<div class="container-fluid" style="padding: 2.5rem 15rem 2.5rem 15rem">
+  <h2>Create reservation</h2>
+  <form>
+    <div class="form-group">
+      <label for="apartment-list">Select an apartment</label>
+      <select class="form-control" id="apartment-list">
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="reservation-date">Reservation date</label>
+      <input class="form-control" id="reservation-date" placeholder="Insert reservation date">
+    </div>
+    <button id="submit-button" class="btn btn-secondary">Create reservation</button>
+  </form>
+</div>
+
+<script src="<%= Routes.static_path(@conn, "/js/create_reservation.js") %>"></script>

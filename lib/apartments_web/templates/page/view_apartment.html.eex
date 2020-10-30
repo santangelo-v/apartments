@@ -10,15 +10,18 @@
       <textarea class="form-control" id="apartment-description" rows="3">Propva</textarea>
     </div>
     <div class="form-group">
-      <label for="apartment-location">Name</label>
+      <label for="apartment-location">Location</label>
       <input class="form-control" id="apartment-location" placeholder="Apartment locaton">
     </div>
     <div class="form-group">
-      <label for="apartment-reservations">Reservations</label>
+      <label for="apartment-reservations">Reservations <small>Click on a reservation date to see weather detail</small></label>
       <select multiple class="form-control" id="apartment-reservations">
       </select>
     </div>
-    <button id="submit-button" class="btn btn-primary">Submit</button>
+    <div id="weather-info-section" class="form-group">
+    </div>
+    <button id="submit-button" class="btn btn-success">Update apartment</button>
+    <button id="delete-button" class="btn btn-danger">Delete apartment</button>
   </form>
 </div>
 

@@ -18,6 +18,7 @@ module.exports = (env, options) => {
       ]
     },
     entry: {
+      'create_reservation': glob.sync('./vendor/**/*.js').concat(['./js/views/create_reservation.js']),
       'create_apartment': glob.sync('./vendor/**/*.js').concat(['./js/views/create_apartment.js']),
       'view_apartment': glob.sync('./vendor/**/*.js').concat(['./js/views/view_apartment.js']),
       'show_apartments': glob.sync('./vendor/**/*.js').concat(['./js/views/show_apartments.js']),

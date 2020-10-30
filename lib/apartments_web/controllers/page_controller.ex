@@ -4,6 +4,11 @@ defmodule ApartmentsWeb.PageController do
   def index(conn, _params) do
     render(conn, "index.html")
   end
+
+  def create_reservation(conn, _params) do
+    render(conn, "create_reservation.html")
+  end
+
   def create_apartment(conn, _params) do
     render(conn, "create_apartment.html")
   end
@@ -15,5 +20,4 @@ defmodule ApartmentsWeb.PageController do
   def show_apartments(conn, _params) do
     render(conn, "apartments.html")
   end
-
 end

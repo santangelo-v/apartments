@@ -24,6 +24,7 @@ defmodule ApartmentsWeb.Router do
     get "/show_apartments", PageController, :show_apartments
     get "/view_apartment/:id", PageController, :view_apartment
     get "/create_apartment", PageController, :create_apartment
+    get "/create_reservation", PageController, :create_reservation
   end
 
   # scope "/apartments", ApartmentsWeb do

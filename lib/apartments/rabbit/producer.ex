@@ -1,4 +1,3 @@
-
 defmodule Apartments.Rabbit.Producer do
   use Rabbit.Producer
 
