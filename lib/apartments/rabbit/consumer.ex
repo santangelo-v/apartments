@@ -3,6 +3,9 @@ defmodule Apartments.Rabbit.Consumer do
   alias Apartments.Repo
   alias Apartments.Apartment
   alias Apartments.Reservation
+  alias Apartments.Weather
+
+  @owm_api_key "ae2eacea49a8dde07d7b51840b131d3e"
 
   def start_link(opts \\ []) do
     Rabbit.Consumer.start_link(__MODULE__, opts, name: __MODULE__)
@@ -39,7 +42,7 @@ defmodule Apartments.Rabbit.Consumer do
   end
 
   defp create_reservation(%{"apartment_id" => apartment_id, "date" => date_string}) do
-    apartment =
+    %{location: location, reservations: reservations} =
       Apartment
       |> Repo.get!(apartment_id)
       |> Repo.preload(:reservations)
@@ -47,17 +50,38 @@ defmodule Apartments.Rabbit.Consumer do
     date = Date.from_iso8601!(date_string)
 
     cond do
-      Enum.any?(apartment.reservations, &(&1.date == date)) ->
+      Enum.any?(reservations, &(&1.date == date)) ->
         {:error, "Date is already reserved for this apartment"}
 
       true ->
-        Repo.insert!(%Reservation{
-          date: date,
-          reserved_on: DateTime.truncate(DateTime.utc_now(), :second),
-          apartment_id: apartment.id
-        })
-    end
+        %{id: reservation_id} =
+          Repo.insert!(%Reservation{
+            date: date,
+            reserved_on: DateTime.truncate(DateTime.utc_now(), :second),
+            apartment_id: apartment_id
+          })
 
-    {:ok, "Successfully reserved #{date_string} for apartment #{apartment.id}"}
+        weather_data = get_weather_data(location, date)
+
+        Repo.insert!(%Weather{
+          reservation_id: reservation_id,
+          temperature: weather_data.temperature,
+          umidity: weather_data.humidity,
+          is_good_weather: weather_data.temperature > 25 and weather_data.humidity < 80
+        })
+
+        {:ok, "Successfully reserved #{date_string} for apartment #{apartment_id}"}
+    end
+  end
+
+  defp get_weather_data(location, _date) do
+    url =
+      "http://api.openweathermap.org/data/2.5/weather?q=#{URI.encode(location)}&units=metric&appid=#{
+        @owm_api_key
+      }"
+
+    %HTTPoison.Response{status_code: 200, body: body} = HTTPoison.get!(url)
+    %{"main" => weather} = Poison.decode!(body)
+    %{temperature: floor(weather["temp"]), humidity: floor(weather["humidity"])}
   end
 end

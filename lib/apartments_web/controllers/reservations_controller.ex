@@ -5,7 +5,10 @@ defmodule ApartmentsWeb.ReservationsController do
   alias Apartments.Reservation
 
   def create(conn, data) do
-    Rabbit.Producer.publish(Apartments.Rabbit.Producer, "", "reservations_queue", data, content_type: "application/json")
+    Rabbit.Producer.publish(Apartments.Rabbit.Producer, "", "reservations_queue", data,
+      content_type: "application/json"
+    )
+
     json(conn, "Successfully added reservation to queue")
   end
 
