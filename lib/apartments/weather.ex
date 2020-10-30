@@ -1,6 +1,6 @@
 defmodule Apartments.Weather do
   use Ecto.Schema
-  @derive {Jason.Encoder, only: [:temperature, :umidity, :is_good_weather]}
+  @derive {Jason.Encoder, only: [:id, :temperature, :umidity, :is_good_weather]}
 
   schema "weathers" do
     field :temperature, :integer

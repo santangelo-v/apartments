@@ -23,7 +23,7 @@ tulipano =
 
 date_time_now = DateTime.truncate(DateTime.utc_now(), :second)
 
-Apartments.Repo.insert!(%Apartments.Reservation{
+%{id: reservation_id} = Apartments.Repo.insert!(%Apartments.Reservation{
   date: Date.from_iso8601!("2021-07-25"),
   reserved_on: date_time_now,
   apartment_id: margherita.id
@@ -63,4 +63,11 @@ Apartments.Repo.insert!(%Apartments.Reservation{
   date: Date.from_iso8601!("2021-08-16"),
   reserved_on: date_time_now,
   apartment_id: tulipano.id
+})
+
+Apartments.Repo.insert!(%Apartments.Weather{
+  reservation_id: reservation_id,
+  temperature: 25,
+  umidity: 70,
+  is_good_weather: true
 })
