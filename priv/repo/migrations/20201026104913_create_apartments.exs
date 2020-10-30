@@ -6,6 +6,7 @@ defmodule Apartments.Repo.Migrations.CreateApartments do
       add :name, :string
       add :description, :string
       add :vacancies, :integer
+      add :location, :text
       timestamps
     end
   end
