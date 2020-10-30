@@ -5,8 +5,9 @@ defmodule ApartmentsWeb.ApartmentsController do
   alias Apartments.Apartment
 
   def delete(conn, %{"id" => id}) do
-    apartment = Repo.get!(Apartment, id)
-    Repo.delete!(apartment)
+    Repo.get!(Apartment, id)
+    |> Repo.delete!()
+
     json(conn, "Successfully deleted apartment #{id}")
   end
 
@@ -16,12 +17,10 @@ defmodule ApartmentsWeb.ApartmentsController do
         "description" => description,
         "location" => location
       }) do
-    apartment = Repo.get!(Apartment, id)
+    Repo.get!(Apartment, id)
+    |> Ecto.Changeset.change(name: name, description: description, location: location)
+    |> Repo.update!()
 
-    apartment =
-      Ecto.Changeset.change(apartment, name: name, description: description, location: location)
-
-    Repo.update!(apartment)
     json(conn, "Successfully updated apartment #{id}")
   end
 
